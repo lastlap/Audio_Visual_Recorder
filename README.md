@@ -1,6 +1,6 @@
 # Audio Visual Recorder
 
-Records Audio and Video simultaneously using Python3
+Records Audio and Video simultaneously using Python3 and Threading.
 
 ## Requirements
 
