@@ -1,11 +1,10 @@
 import time
-# import numpy as np
+
 import cv2
 import speech_recognition as sr
 import threading
 import subprocess, os
-# from Video_Rec import VideoRecorder
-# from Audio_Rec import AudioRecorder
+
 
 class VideoRecorder:
 
@@ -28,7 +27,7 @@ class VideoRecorder:
     def save_output(self):
         vid_cod = cv2.VideoWriter_fourcc(*'mp4v')
         height, width, layers = self.output[0].shape
-        self.video = cv2.VideoWriter("test.mp4", vid_cod, 16.0, (width,height))
+        self.video = cv2.VideoWriter("test3.mp4", vid_cod, 16.0, (width,height))
         for image in self.output:
             self.video.write(image)
         self.video.release()
@@ -55,7 +54,7 @@ class AudioRecorder:
             self.audio = self.r.listen(source)
     
     def save_output(self):
-        with open('test.wav','wb') as file:
+        with open('test3.wav','wb') as file:
             file.write(self.audio.get_wav_data())
 
     def start(self):
@@ -75,15 +74,15 @@ def av_record():
     video_thread.stop()
 
     # removing previous files
-    if os.path.isfile('test.wav'): os.remove('test.wav') 
-    if os.path.isfile('test.mp4'): os.remove('test.mp4') 
-    if os.path.isfile('output.mp4'): os.remove('output.mp4')
+    if os.path.isfile('test3.wav'): os.remove('test3.wav') 
+    if os.path.isfile('test3.mp4'): os.remove('test3.mp4') 
+    if os.path.isfile('output3.mp4'): os.remove('output3.mp4')
 
     video_thread.save_output()
     audio_thread.save_output()
 
     # merging audio and video
-    cmd = 'ffmpeg -i test.mp4 -i test.wav -c:v copy -c:a aac output.mp4'
+    cmd = 'ffmpeg -i test3.mp4 -i test3.wav -c:v copy -c:a aac output3.mp4'
     subprocess.call(cmd,shell=True)
 
 def main():

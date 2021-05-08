@@ -1,14 +1,9 @@
 import time
-# import numpy as np
+
 import cv2
 import speech_recognition as sr
 import threading
 import subprocess, os
-# from Video_Rec import VideoRecorder
-# from Audio_Rec import AudioRecorder
-
-import cv2
-import threading
 
 import pyaudio
 import wave
