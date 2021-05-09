@@ -1,7 +1,7 @@
 import time
 
 import cv2
-import speech_recognition as sr
+
 import threading
 import subprocess, os
 
